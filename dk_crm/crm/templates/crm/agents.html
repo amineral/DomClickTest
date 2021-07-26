@@ -1,0 +1,5 @@
+{% for agent in agents %}
+    {{ agent.user.first_name }} {{ agent.user.last_name }}<br>
+{% endfor %}
+
+<a href="{% url 'index' %}">Back</a>

@@ -1,0 +1,16 @@
+<h2>{{ task.title }}</h2>
+{{ task.text }}<br>
+{% if role != "Client" %}
+    From: {{ task.client }}<br>
+{% endif %}
+
+{% if role != "Client" %}
+    <a href="{% url 'task_in_work' id=task.id %}">
+        {% if task.status == 'registered' %}
+            <button>In work</button>
+        {% else %}
+            <button>Done</button>
+        {% endif %}
+{% endif %}
+
+<p><a href="{% url 'tasks' %}">Back</a></p>

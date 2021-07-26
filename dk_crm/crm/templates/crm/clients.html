@@ -1,0 +1,5 @@
+{% for client in clients %}
+    {{ client.user.first_name }} {{ client.user.last_name }}<br>
+{% endfor %}
+
+<a href="{% url 'index' %}">Back</a>

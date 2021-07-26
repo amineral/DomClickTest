@@ -1,0 +1,7 @@
+<h1>Marvel Office</h1>
+
+<form action="/proceed_auth/" method="POST">
+    {% csrf_token %}
+    {{ form_auth.as_p }}<br>
+    <input type="submit" value="Login">
+</form>

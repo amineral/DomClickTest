@@ -1,0 +1,6 @@
+{% for task in tasks %}
+    {{ task.id }} | {{ task }} | {{ task.status }}<br>
+    <a href="{% url 'details' id=task.id %}">details</a><br>
+{% endfor %}
+
+<p><a href="{% url 'index' %}">Back</a></p>

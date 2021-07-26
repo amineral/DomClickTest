@@ -1,0 +1,29 @@
+<h1>Main Page</h1>
+
+<h2>Hello {{ user.first_name }} </h2>
+<h3>Role: {{ role }}</h3>
+
+{% if role == "Admin" %}
+    <p><a href="{% url 'agents' %}">Agents</a></p>
+    <p><a href="{% url 'tasks' %}">Tasks</a><br>
+    <p><a href="{% url 'clients' %}">Clients</a></p>
+    <h3>New tasks</h3>
+    {% for task in new_tasks %}
+        <p>{{ task.title }}</p> 
+        <p>from: {{ task.client }} </p>
+    {% endfor %}
+{% elif role == "Client" %}
+    <p><a href="{% url 'tasks' %}">Tasks</a><br>
+    <form action="/create_task/" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}<br>
+        <input type="submit" value="Create New Task">
+    </form>
+{% else %}
+    <p><a href="{% url 'clients' %}">Clients</a></p>
+    <p><a href="{% url 'tasks' %}">Tasks</a><br>
+{% endif %}
+
+<form action="/proceed_logout/" method="GET">
+    <button>Logout</button>
+</form>
